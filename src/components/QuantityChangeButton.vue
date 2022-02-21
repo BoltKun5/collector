@@ -1,28 +1,41 @@
 <template>
-    <div class="quantity-change-button">
-        {{modification}}{{amount}}
-    </div>
+  <div class="quantity-change-button" @click="clickEvent">
+    <div class="change-sign">{{ modification === "plus" ? "+" : "-" }}</div>
+  </div>
 </template>
 
 <script>
-    export default {
-        props: {
-            amount: Number,
-            modification: {
-                type: String,
-                value: "+" | "-"
-            }
-        },
-    }
+export default {
+  props: {
+    amount: Number,
+    modification: {
+      type: String,
+      value: "plus" | "minus",
+    },
+  },
+  methods: {
+    clickEvent() {
+      this.$emit("modifyCount", this.modification);
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-    .quantity-change-button {
-        padding: 5px;
-        background-color: rgb(185, 185, 255);
-        border: darkslategray 2px solid;
-        color: darkslategray;
-        width: fit-content;
-        font-weight: 400;
-    }
+.quantity-change-button {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  margin: auto 10px;
+  background-color: rgb(255, 255, 255);
+  border: rgb(59, 0, 0) 2px solid;
+  color: darkslategray;
+  font-weight: bold;
+  justify-content: center;
+  border-radius: 1000px;
+  align-items: center;
+}
+.change-sign {
+    pointer-events: none;
+}
 </style>

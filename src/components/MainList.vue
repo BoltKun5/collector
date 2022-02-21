@@ -2,9 +2,7 @@
   <div class="main-list">
     <SearchComponent />
     <div class="card-list">
-      <Card />
-      <Card />
-      <Card />
+      <Card v-for="img in 100" :img="img" :key="img" @ />
     </div>
   </div>
 </template>
@@ -12,21 +10,38 @@
 <script>
 import SearchComponent from "./SearchComponent.vue";
 import Card from "./Card.vue";
+
 export default {
-    components: {
-        SearchComponent,
-        Card
-    }
+  components: {
+    SearchComponent,
+    Card,
+  },
+  data() {
+    return {};
+  },
+  computed: {},
+  methods: {
+    modifyCount() {
+      if (modification === "plus") {
+        this.count++;
+      } else {
+        this.count--;
+        if (this.count < 0) {
+          this.count = 0;
+        }
+      }
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .main-list {
-  background: rebeccapurple;
-  flex: 1;
 }
 .card-list {
-    width: 90%;
-    margin: 0 auto;
+  background: rebeccapurple;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
 }
 </style>
