@@ -1,30 +1,29 @@
 <template>
-  <Navbar/>
-  <MainList/>
+  <!-- <Navbar /> -->
+  <MainList />
 </template>
 
 <script>
-import Navbar from "./components/Navbar.vue";
+// import Navbar from "./components/Navbar.vue";
 import MainList from "./components/MainList.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    Navbar,
-    MainList
+    // Navbar,
+    MainList,
   },
-}
+};
 </script>
 
 <style lang="scss">
-  body {
-    margin: 0;
-    width: 100vw;
-    height: 100vh
-  }
-  #app {
-    width: 100%;
-    height: 100%;
-    display: flex;
-  }
+body {
+  margin: 0;
+  height: 100vh;
+}
+#app {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
 </style>

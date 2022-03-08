@@ -15,7 +15,7 @@ export default {
   },
   methods: {
     clickEvent() {
-      this.$emit("modifyCount", this.modification);
+      this.$emit(this.modification === "plus" ? "addOne" : "removeOne");
     },
   },
 };

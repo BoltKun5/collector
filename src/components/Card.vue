@@ -1,11 +1,9 @@
 <template>
   <div class="single-card">
     <img
-      :src="
-        'https://www.pokecardex.com/assets/images/sets/FST/HD/' + img + '.jpg'
-      "
+      :src="'https://www.pokecardex.com/assets/images/sets/FST/' + img + '.jpg'"
     />
-    <CardCounter @modifyCount/>
+    <CardCounter @addOne="addOne" @removeOne="removeOne" :count="count" />
   </div>
 </template>
 
@@ -16,13 +14,19 @@ export default {
     img: {
       type: Number,
     },
+    count: {
+      type: Number,
+    },
   },
   components: {
     CardCounter,
   },
   methods: {
-    modifyCount(modification) {
-      this.$emit("modifyCount", this.modification);
+    addOne() {
+      this.$emit("addOne");
+    },
+    removeOne() {
+      this.$emit("removeOne");
     },
   },
 };
