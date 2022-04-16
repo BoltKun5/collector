@@ -1,5 +1,8 @@
 <template>
-  <div class="main-list">
+  <div
+    class="main-list"
+    :style="`background: url('${require('@/assets/background.jpeg')}')`"
+  >
     <SearchComponent @updateFilters="updateFilters" />
     <div class="card-list">
       <Card
@@ -16,7 +19,7 @@
 
 <script>
 import SearchComponent from "./SearchComponent.vue";
-import Card from "./Card.vue";
+import Card from "./Card/Card.vue";
 import json from "../data.json";
 
 export default {
@@ -34,9 +37,29 @@ export default {
     };
   },
   computed: {
+  //     if (searchInput.value === '') {
+  //   return props.items;
+  // }
+
+  // const regex = new RegExp(/\s/g);
+  // const searchText = searchInput.value.replace(regex, '').toLowerCase();
+  // return props.items.filter((item) => {
+  //   const cleanLabel = item.label.replace(regex, '').toLowerCase();
+  //   return cleanLabel.includes(searchText);
+  // });
     filteredArray() {
       return this.cards.filter((card) => {
-        return this.filters.rarities.includes(card.rarity);
+        let isSearchedName;
+         if (this.filters.name === '') {
+           isSearchedName = true;
+         }
+          const regex = new RegExp(/\s/g);
+          const searchText = this.filters.name.replace(regex, '').toLowerCase();
+
+          const cleanLabel = card.name.replace(regex, '').toLowerCase();
+          isSearchedName = cleanLabel.includes(searchText);
+
+        return (this.filters.rarities.includes(card.rarity) && isSearchedName);
       });
     },
   },
@@ -60,7 +83,6 @@ export default {
   width: 100%;
 }
 .card-list {
-  background: rebeccapurple;
   display: flex;
   flex-wrap: wrap;
   padding: 0 20px;

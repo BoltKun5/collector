@@ -3,8 +3,9 @@
     <input
       class="SearchComponent-SearchBar"
       type="text"
-      :value="searchbar_value"
+      v-model="filters.name"
       placeholder="Recherche une carte par nom"
+      @input="updateNameFilter()"
     />
 
 <!-- TODO: Mettre tout ça dans des components -->
@@ -67,10 +68,12 @@ export default {
   data() {
     return {
       filters: {},
-      searchbar_value: ""
     };
   },
   methods: {
+    updateNameFilter() {
+      this.$emit("updateFilters", this.filters)
+    },
     updateRarityFilter(name) {
       !this.filters.rarities.includes(name)
         ? this.filters.rarities.push(name)

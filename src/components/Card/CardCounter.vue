@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import QuantityChangeButton from "./QuantityChangeButton.vue";
+import QuantityChangeButton from "../QuantityChangeButton.vue";
 export default {
   components: { QuantityChangeButton },
   data() {
@@ -51,10 +51,10 @@ export default {
 .counter {
   background: rgba(0, 0, 0, 0.6);
   color: white;
-  border-radius: 0 0 19px 19px;
+  border-radius: 0 0 10px 10px;
   position: absolute;
   width: 100%;
-  bottom: 0;
+  bottom: 4px;
   transition: 0.6s;
   height: 50px;
 
@@ -62,7 +62,7 @@ export default {
   justify-content: center;
 
   &:hover {
-    border-radius: 19px 19px 19px 19px;
+    border-radius: 10px;
     height: 100%;
   }
 }

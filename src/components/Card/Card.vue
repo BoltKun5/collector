@@ -38,7 +38,7 @@ export default {
   position: relative;
 }
 img {
-  border-radius: 19px;
+  border-radius: 10px;
   width: 200px;
 }
 </style>
